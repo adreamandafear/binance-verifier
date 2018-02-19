@@ -1,0 +1,56 @@
+<document>
+<!-- Includes xlsx parser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.6/xlsx.full.min.js"></script>
+
+<!-- import helper functions -->
+<script src='xslxParser.js'></script>
+<script src='binanceParser.js'></script>
+
+<script>
+window.onload = function() {
+  populateDefault();
+  document.getElementById('reset').addEventListener('click', populateDefault);
+  const file = document.getElementById('file');
+  file.addEventListener('change', ParseXSLX.bind(null, ParseBinance))
+  console.log(Coins);
+};
+
+</script>
+
+<body>
+
+<h1> Instructions </h1>
+<div>
+  Welcome to my binance trade compressor. I saw a lot of posts on Reddit about people worried that Binance had screwed them over and they had missing funds from transactions that weren't really cancelled, so I wrote a simple parser that takes in the Excel Spreadsheet that you can export from Binance, and summarizes the transactions. I initially wrote this for my own use, but decided to share it in case others might find it useful.
+   <li> On binance, click "Export Complete Order History" </li>
+   <li> Click past 3 months, then Export </li>
+   <li> Upload the file below </li>
+   <li> Check that the number beside each coin matches Deposits - withdrawals + Binance balance </li>
+</div>
+<br/>
+<input type="file" id="file" name="Transactions" accept=".xlsx">
+<br/>
+<br/>
+<div> Your expected net change in coins: </div>
+<div id="tokens">
+</div>
+
+<div>
+<input type="button" value="Reset Coins" id='reset'>
+<br/>
+<br/>
+<br/>
+<div>
+  Caveats: This does not include fees in transactions, so a few dollars here and there discrepancy is expected especially if you don't use the BNB fee discount. This also doesn't account for NEO GAS dividends. If you find any bugs, please send me the console errors via reddit u/adreamandafear. Based on this, I didn't find any discrepancies between what binance showed, and what was expected, so yay binance :)
+</div>
+<br/>
+<br/>
+<div>
+Hope you found this helpful :) Feel like buying me a beer?
+  <li> Eth: 0x14b494F56c4e7D65142a57A9eD37b88E511217eF</li>
+  <li> Nano: xrb_3c4iwaidbojgyfoqbp19ujmgcunusmsfzwwcswbdxerpftmpbgn178nuiii4</li>
+</div>
+</div>
+
+</body>
+</document>
